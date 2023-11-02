@@ -8,9 +8,9 @@ import {
   IdentificationIcon,
   LightBulbIcon,
   UserGroupIcon,
-} from "../assets/icons/sidebar";
-import classNames from "../utils/classNames";
-import { NavigationItem } from "../interfaces";
+} from "../../assets/icons/sidebar";
+import classNames from "../../utils/classNames";
+import { NavigationItem } from "../../interfaces";
 
 const navigations: NavigationItem[] = [
   { name: "Персонал", href: "#", icon: IdentificationIcon },

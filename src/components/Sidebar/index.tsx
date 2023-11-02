@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import Calendar from "./Calendar";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Navigation from "./Navigation";
+import logoPng from "../../assets/images/logo.png";
 
 export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function Sidebar() {
                     <div className="flex h-16 shrink-0 items-center">
                       <img
                         className="h-8 w-auto"
-                        src={"/logo.png"}
+                        src={"../../assets/images/logo.png"}
                         alt="Your Company"
                       />
                     </div>
@@ -87,7 +88,7 @@ export default function Sidebar() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img className="h-8 w-auto" src="/logo.png" alt="Your Company" />
+              <img className="h-8 w-auto" src={logoPng} alt="Your Company" />
             </div>
             <div className="flex h-fit w-full shrink-0 items-center">
               <Calendar />

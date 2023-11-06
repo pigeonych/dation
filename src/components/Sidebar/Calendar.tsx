@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import {
   startOfToday,
@@ -20,7 +20,9 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Calendar() {
+export const Calendar: FC<{
+  setDay: React.Dispatch<React.SetStateAction<Date>>;
+}> = ({ setDay }) => {
   const today = startOfToday();
   const [selectedDay, setSelectedDay] = useState(today);
   const [currentMonth, setCurrentMonth] = useState(format(today, "MMMM-yyyy"));
@@ -29,6 +31,10 @@ export default function Calendar() {
     start: startOfWeek(firstDayCurrentMonth),
     end: endOfWeek(endOfMonth(firstDayCurrentMonth)),
   });
+
+  useEffect(() => {
+    setDay(selectedDay);
+  }, [selectedDay]);
 
   const nextMonth = () => {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
@@ -53,7 +59,7 @@ export default function Calendar() {
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
           </button>
           <div className="flex-auto text-base font-bold">
-            {translateDate(format(firstDayCurrentMonth, "MMMM yyyy"))}
+            {translateDate(format(firstDayCurrentMonth, "MMMM yyyy"), true)}
           </div>
           <button
             onClick={nextMonth}
@@ -122,7 +128,7 @@ export default function Calendar() {
       </div>
     </div>
   );
-}
+};
 
 let colStartClasses = [
   "",

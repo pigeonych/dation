@@ -1,33 +1,9 @@
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-const rusMonths = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
-];
-export const translateDate = (date: string) => {
+import { months, rusMonths } from "../constants";
+
+export const translateDate = (date: string, y: boolean) => {
   return (
-    rusMonths[months.findIndex((m) => date.includes(m))] + " " + date.slice(-4)
+    rusMonths[months.findIndex((m) => date.includes(m))] +
+    " " +
+    (y ? date.slice(-4) : date.slice(-2))
   );
 };

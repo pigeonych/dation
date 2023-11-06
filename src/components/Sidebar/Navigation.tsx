@@ -11,20 +11,21 @@ import {
 } from "../../assets/icons/sidebar";
 import classNames from "../../utils/classNames";
 import { NavigationItem } from "../../interfaces";
+import { Link } from "react-router-dom";
 
 const navigations: NavigationItem[] = [
-  { name: "Персонал", href: "#", icon: IdentificationIcon },
-  { name: "Клиенты", href: "#", icon: UserGroupIcon },
-  { name: "Услуги", href: "#", icon: AdjustmentsIcon },
-  { name: "Склад", href: "#", icon: ArchiveIcon },
+  { name: "Персонал", to: "/staff", icon: IdentificationIcon },
+  { name: "Клиенты", to: "/clients", icon: UserGroupIcon },
+  { name: "Услуги", to: "/services", icon: AdjustmentsIcon },
+  { name: "Склад", to: "/stock", icon: ArchiveIcon },
   {
     name: "Бронирования",
-    href: "#",
+    to: "/reservations",
     icon: CollectionIcon,
   },
-  { name: "Интеграции", href: "#", icon: LightBulbIcon },
-  { name: "Билинг", href: "#", icon: CashIcon },
-  { name: "Настройки", href: "#", icon: CogIcon },
+  { name: "Интеграции", to: "/integration", icon: LightBulbIcon },
+  { name: "Билинг", to: "/billing", icon: CashIcon },
+  { name: "Настройки", to: "/settings", icon: CogIcon },
 ];
 const Navigation: React.FC<{}> = () => {
   const [currentNavigation, setCurrentNavigation] = React.useState(
@@ -40,8 +41,8 @@ const Navigation: React.FC<{}> = () => {
               const isCurrent = item.name === currentNavigation.name;
               return (
                 <li key={item.name} onClick={() => setCurrentNavigation(item)}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.to}
                     className={classNames(
                       isCurrent
                         ? "bg-gray-50 text-brand"
@@ -58,7 +59,7 @@ const Navigation: React.FC<{}> = () => {
                       )}
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

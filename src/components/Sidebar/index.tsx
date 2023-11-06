@@ -1,12 +1,18 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import Calendar from "./Calendar";
+import { Calendar as MiniCalendar } from "./Calendar";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import Navigation from "./Navigation";
 import logoPng from "../../assets/images/logo.png";
 
+import { Routes, Route, Link } from "react-router-dom";
+import Calendar from "../Calendar";
+import { startOfToday } from "date-fns";
+
 export default function Sidebar() {
+  const today = startOfToday();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [day, setDay] = useState(today);
 
   return (
     <>
@@ -68,12 +74,12 @@ export default function Sidebar() {
                     <div className="flex h-16 shrink-0 items-center">
                       <img
                         className="h-8 w-auto"
-                        src={"../../assets/images/logo.png"}
+                        src={logoPng}
                         alt="Your Company"
                       />
                     </div>
                     <div className="flex h-fit w-full shrink-0 items-center">
-                      <Calendar />
+                      <MiniCalendar setDay={setDay} />
                     </div>
                     <Navigation />
                   </div>
@@ -86,12 +92,15 @@ export default function Sidebar() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
+
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
-            <div className="flex h-16 shrink-0 items-center">
-              <img className="h-8 w-auto" src={logoPng} alt="Your Company" />
+            <div className="w-full h-16 p-4 pl-0">
+              <Link to={"/"}>
+                <img className="h-8 w-auto" src={logoPng} alt="Your Company" />
+              </Link>
             </div>
             <div className="flex h-fit w-full shrink-0 items-center">
-              <Calendar />
+              <MiniCalendar setDay={setDay} />
             </div>
             <Navigation />
           </div>
@@ -119,8 +128,15 @@ export default function Sidebar() {
           </a>
         </div>
 
-        <main className="py-10 lg:pl-72">
-          <div className="px-4 sm:px-6 lg:px-8"> </div>
+        <main className="lg:pl-72">
+          <div>
+            <Routes>
+              <Route path={"/"} element={<Calendar day={day} />} />
+              <Route path={"/about"} element={<div>About</div>} />
+              // Other routes...
+              <Route path={"*"} element={<div>404 Not found</div>} />
+            </Routes>
+          </div>
         </main>
       </div>
     </>

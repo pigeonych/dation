@@ -4,6 +4,6 @@ export type NavigationIcon = React.FC<{ className: string | undefined }>;
 
 export type NavigationItem = {
   name: string;
-  href: string;
+  to: string;
   icon: NavigationIcon;
 };

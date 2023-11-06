@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/dation/static/css/main.664a4413.css",
-    "main.js": "/dation/static/js/main.77cc2579.js",
-    "index.html": "/dation/index.html",
-    "main.664a4413.css.map": "/dation/static/css/main.664a4413.css.map",
-    "main.77cc2579.js.map": "/dation/static/js/main.77cc2579.js.map"
+    "main.css": "/static/css/main.b798d74d.css",
+    "main.js": "/static/js/main.0ad9b80a.js",
+    "static/media/clock.svg": "/static/media/clock.5d69bc4b26e9a21374b20cc3cf694069.svg",
+    "index.html": "/index.html",
+    "main.b798d74d.css.map": "/static/css/main.b798d74d.css.map",
+    "main.0ad9b80a.js.map": "/static/js/main.0ad9b80a.js.map"
   },
   "entrypoints": [
-    "static/css/main.664a4413.css",
-    "static/js/main.77cc2579.js"
+    "static/css/main.b798d74d.css",
+    "static/js/main.0ad9b80a.js"
   ]
 }

@@ -36,3 +36,13 @@ export const rusWeekDays = [
   "суббота",
   "воскресенье",
 ];
+
+export const Statuses: {
+  process: string;
+  done: string;
+  canceled: string;
+} = {
+  process: "В процессе",
+  done: "Завершено",
+  canceled: "Отменено",
+};

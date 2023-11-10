@@ -1,12 +1,11 @@
 import React, { FC, useEffect, useRef } from "react";
-
-import classNames from "../../utils/classNames";
 import TimeIcon from "../../assets/svg/clock.svg";
 import { format } from "date-fns";
 import { translateDate } from "../../utils/translateDate";
 import { rusWeekDays } from "../../constants";
 import Select from "../Select";
 import Input from "../Input";
+import { Row, Col, Button } from "antd";
 
 const Calendar: FC<{ day: Date }> = ({ day }) => {
   const container = useRef<HTMLDivElement>(null);
@@ -16,39 +15,39 @@ const Calendar: FC<{ day: Date }> = ({ day }) => {
   return (
     <div className="flex h-full flex-col">
       <header className="flex flex-none items-center justify-between border-b border-gray-200 px-6 py-4 bg-white">
-        <h1 className="font-semibold leading-6 text-gray-800 text-2xl leading-9">
+        <h1 className="font-semibold text-gray-800 text-2xl leading-9">
           <time dateTime={format(day, "yyyy-MM-dd")}>
             {translateDate(format(day, "MMMM dd"), false) +
               ", " +
               rusWeekDays[day.getDay()]}
           </time>
         </h1>
-        <div className="flex items-center">
-          <button
-            type="button"
-            className="ml-6 rounded-md  bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
+        <div className="flex items-center align-middle">
+          <button className="ml-6 rounded-md  bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Создать запись
           </button>
         </div>
       </header>
-      <div className="flex bg-gray-100 w-full py-4 px-6 items-center justify-between gap-x-4">
-        <div className="sm:w-64 md:w-72 xl:w-80 2xl:w-96">
+      <Row
+        wrap
+        className="flex bg-gray-100 w-full py-4 px-6 items-center justify-between gap-4"
+      >
+        <Col flex={3}>
           <Input placeholder={"Поиск..."} type={"text"} />
-        </div>
-        <div className="sm:w-52 md:w-56 xl:w-64 2xl:w-64">
+        </Col>
+        <Col flex={2}>
           <Select placeholder="По сотрудникам" />
-        </div>
-        <div className="sm:w-52 md:w-56 xl:w-64 2xl:w-64">
+        </Col>
+        <Col flex={2}>
           <Select placeholder="По ресурсам" />
-        </div>
-        <div className="sm:w-52 md:w-56 xl:w-64 2xl:w-64">
+        </Col>
+        <Col flex={2}>
           <Select placeholder="По категориям" />
-        </div>
-        <div className="sm:w-52 md:w-56 xl:w-64 2xl:w-64">
+        </Col>
+        <Col flex={2}>
           <Select placeholder="Выбрать статус" />
-        </div>
-      </div>
+        </Col>
+      </Row>
       <div
         ref={container}
         className="isolate flex flex-auto flex-col overflow-auto bg-white"

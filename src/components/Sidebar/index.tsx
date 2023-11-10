@@ -1,18 +1,48 @@
 import React, { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { Calendar as MiniCalendar } from "./Calendar";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
-import Navigation from "./Navigation";
-import logoPng from "../../assets/images/logo.png";
-
 import { Routes, Route, Link } from "react-router-dom";
-import Calendar from "../Calendar";
+import { Dialog, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
+import logoPng from "../../assets/images/logo.png";
 import { startOfToday } from "date-fns";
+import { Dropdown, MenuProps } from "antd";
+
+import { Calendar as MiniCalendar } from "./Calendar";
+import Navigation from "./Navigation";
+import Calendar from "../Calendar";
+import EditPage from "../Edit/index";
+import LocationMarker from "../../assets/svg/locationmarker.svg";
+import ChevronDownIcon from "../../assets/svg/chevrondown.svg";
 
 export default function Sidebar() {
   const today = startOfToday();
+  const [branch, setBranch] = useState("Филиал 1");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [day, setDay] = useState(today);
+
+  const branches: MenuProps["items"] = [
+    {
+      label: "Филиал 1",
+      key: "Филиал 1",
+    },
+    {
+      label: "Филиал 2",
+      key: "Филиал 2",
+    },
+    {
+      label: "Филиал 3",
+      key: "Филиал 3",
+    },
+  ];
+
+  const changeBranch: MenuProps["onClick"] = (e) => {
+    setBranch(e.key);
+  };
+
+  const branchMenu: MenuProps = {
+    items: branches,
+    triggerSubMenuAction: "click",
+    onClick: changeBranch,
+  };
 
   return (
     <>
@@ -78,6 +108,23 @@ export default function Sidebar() {
                         alt="Your Company"
                       />
                     </div>
+                    <div className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 px-5 gap-[12px] text-base border-b-[1px] border-solid border-gray-200">
+                      <div className="flex flex-row items-center justify-start gap-[4px]">
+                        <img
+                          className="w-5 h-5 overflow-hidden shrink-0"
+                          alt="locationMarker"
+                          src={LocationMarker}
+                        />
+                        <div className="leading-[24px] font-medium">
+                          {branch}
+                        </div>
+                      </div>
+                      <img
+                        className="w-5 h-5 overflow-hidden shrink-0"
+                        alt=""
+                        src={ChevronDownIcon}
+                      />
+                    </div>
                     <div className="flex h-fit w-full shrink-0 items-center">
                       <MiniCalendar setDay={setDay} />
                     </div>
@@ -99,6 +146,27 @@ export default function Sidebar() {
                 <img className="h-8 w-auto" src={logoPng} alt="Your Company" />
               </Link>
             </div>
+            <Dropdown
+              trigger={["click"]}
+              menu={branchMenu}
+              className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 px-5 gap-[12px] text-base border-b-[1px] border-t-[1px] border-solid border-gray-200"
+            >
+              <div className="flex flex-row items-center justify-start gap-[4px]">
+                <img
+                  className="w-5 h-5 overflow-hidden shrink-0"
+                  alt="locationMarker"
+                  src={LocationMarker}
+                />
+                <div className="flex-1 relative leading-[24px] font-medium">
+                  {branch}
+                </div>
+                <img
+                  className="w-5 h-5 overflow-hidden shrink-0"
+                  alt="downIcon"
+                  src={ChevronDownIcon}
+                />
+              </div>
+            </Dropdown>
             <div className="flex h-fit w-full shrink-0 items-center">
               <MiniCalendar setDay={setDay} />
             </div>
@@ -128,10 +196,11 @@ export default function Sidebar() {
           </a>
         </div>
 
-        <main className="lg:pl-72">
+        <main className="lg:pl-72 pb-6 bg-gray-100">
           <div>
             <Routes>
-              <Route path={"/"} element={<Calendar day={day} />} />
+              <Route path={"/staff"} element={<Calendar day={day} />} />
+              <Route path={"/staff/:id/edit"} element={<EditPage />} />
               <Route path={"/about"} element={<div>About</div>} />
               // Other routes...
               <Route path={"*"} element={<div>404 Not found</div>} />

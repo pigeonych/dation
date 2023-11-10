@@ -7,3 +7,5 @@ export type NavigationItem = {
   to: string;
   icon: NavigationIcon;
 };
+
+export type StatusType = "process" | "done" | "canceled";

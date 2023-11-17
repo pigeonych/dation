@@ -46,3 +46,7 @@ export const Statuses: {
   done: "Завершено",
   canceled: "Отменено",
 };
+
+export const brand = {
+  backgroundColor: "#3B65F3",
+};

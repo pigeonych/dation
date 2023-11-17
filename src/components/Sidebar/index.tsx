@@ -12,6 +12,7 @@ import Calendar from "../Calendar";
 import EditPage from "../Edit/index";
 import LocationMarker from "../../assets/svg/locationmarker.svg";
 import ChevronDownIcon from "../../assets/svg/chevrondown.svg";
+import Page404 from "../404";
 
 export default function Sidebar() {
   const today = startOfToday();
@@ -196,16 +197,16 @@ export default function Sidebar() {
           </a>
         </div>
 
-        <main className="lg:pl-72 pb-6 bg-gray-100">
-          <div>
-            <Routes>
-              <Route path={"/staff"} element={<Calendar day={day} />} />
-              <Route path={"/staff/:id/edit"} element={<EditPage />} />
-              <Route path={"/about"} element={<div>About</div>} />
-              // Other routes...
-              <Route path={"*"} element={<div>404 Not found</div>} />
-            </Routes>
-          </div>
+        <main className="lg:pl-72">
+          <Routes>
+            <Route path={"/"} element={<Calendar day={day} />} />
+            <Route path={"/staff"} element={<Calendar day={day} />} />
+            <Route path={"/staff/:id/edit"} element={<EditPage edit />} />
+            <Route path={"/staff/:id/create"} element={<EditPage create />} />
+            <Route path={"/about"} element={<div>About</div>} />
+            // Other routes...
+            <Route path={"*"} element={<Page404 />} />
+          </Routes>
         </main>
       </div>
     </>

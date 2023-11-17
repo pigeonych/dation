@@ -23,14 +23,14 @@ const Calendar: FC<{ day: Date }> = ({ day }) => {
           </time>
         </h1>
         <div className="flex items-center align-middle">
-          <button className="ml-6 rounded-md  bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          <button className="ml-6 rounded-md  bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:bg-indigo-500">
             Создать запись
           </button>
         </div>
       </header>
       <Row
         wrap
-        className="flex bg-gray-100 w-full py-4 px-6 items-center justify-between gap-4"
+        className="flex w-full py-4 px-6 items-center justify-between gap-4"
       >
         <Col flex={3}>
           <Input placeholder={"Поиск..."} type={"text"} />
@@ -473,7 +473,7 @@ const Calendar: FC<{ day: Date }> = ({ day }) => {
                 >
                   <a
                     href="#"
-                    className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-gray-100 p-2 text-xs leading-5 hover:bg-gray-200"
+                    className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5 bg-gray-100 hover:bg-gray-200"
                   >
                     <p className="order-1 font-semibold text-gray-700">
                       Meeting with design team at Disney

@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/dation/static/css/main.2b6a4ccb.css",
-    "main.js": "/dation/static/js/main.405981c8.js",
+    "main.css": "/dation/static/css/main.c70e6aa9.css",
+    "main.js": "/dation/static/js/main.464105af.js",
     "static/media/locationmarker.svg": "/dation/static/media/locationmarker.1fba8a50d15f0fe7645fc007e4bb7f0d.svg",
     "static/media/chevrondown.svg": "/dation/static/media/chevrondown.cc50d63d90330724dbf7d2da3b9260db.svg",
+    "static/media/collection.svg": "/dation/static/media/collection.32f087340c9069d8900d73cff81425c1.svg",
     "static/media/clock.svg": "/dation/static/media/clock.7de715daf18b513b63e402f2cbb3a8da.svg",
     "static/media/discount.svg": "/dation/static/media/discount.dac229e128fc83b844e80ca9553b699c.svg",
-    "index.html": "/dation/index.html",
     "static/media/trash.svg": "/dation/static/media/trash.16d6d478e134e659c64ba09f749193c9.svg",
-    "main.2b6a4ccb.css.map": "/dation/static/css/main.2b6a4ccb.css.map",
-    "main.405981c8.js.map": "/dation/static/js/main.405981c8.js.map"
+    "index.html": "/dation/index.html",
+    "main.c70e6aa9.css.map": "/dation/static/css/main.c70e6aa9.css.map",
+    "main.464105af.js.map": "/dation/static/js/main.464105af.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b6a4ccb.css",
-    "static/js/main.405981c8.js"
+    "static/css/main.c70e6aa9.css",
+    "static/js/main.464105af.js"
   ]
 }

@@ -6,6 +6,7 @@ import { rusWeekDays } from "../../constants";
 import Select from "../Select";
 import Input from "../Input";
 import { Row, Col, Button } from "antd";
+import { Link } from "react-router-dom";
 
 const Calendar: FC<{ day: Date }> = ({ day }) => {
   const container = useRef<HTMLDivElement>(null);
@@ -23,9 +24,11 @@ const Calendar: FC<{ day: Date }> = ({ day }) => {
           </time>
         </h1>
         <div className="flex items-center align-middle">
-          <button className="ml-6 rounded-md  bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:bg-indigo-500">
-            Создать запись
-          </button>
+          <Link to={"/records/create"} key={"create"}>
+            <button className="ml-6 rounded-md  bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:bg-indigo-500">
+              Создать запись
+            </button>
+          </Link>
         </div>
       </header>
       <Row

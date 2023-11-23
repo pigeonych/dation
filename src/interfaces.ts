@@ -1,6 +1,9 @@
 import React from "react";
 
-export type NavigationIcon = React.FC<{ className: string | undefined }>;
+export type NavigationIcon = React.FC<{
+  className: string | undefined;
+  color: string;
+}>;
 
 export type NavigationItem = {
   name: string;

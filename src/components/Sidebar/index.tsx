@@ -13,6 +13,9 @@ import EditPage from "../Edit/index";
 import LocationMarker from "../../assets/svg/locationmarker.svg";
 import ChevronDownIcon from "../../assets/svg/chevrondown.svg";
 import Page404 from "../404";
+import Company from "../Company";
+import Services from "../Services";
+import CategoryView from "../Services/Individual/CategoryView";
 
 export default function Sidebar() {
   const today = startOfToday();
@@ -200,10 +203,13 @@ export default function Sidebar() {
         <main className="lg:pl-72">
           <Routes>
             <Route path={"/"} element={<Calendar day={day} />} />
-            <Route path={"/staff"} element={<Calendar day={day} />} />
-            <Route path={"/staff/:id/edit"} element={<EditPage edit />} />
-            <Route path={"/staff/:id/create"} element={<EditPage create />} />
+            <Route path={"/company"} element={<Company />} />
+            <Route path={"/records/general"} element={<Calendar day={day} />} />
+            <Route path={"/records/:id/edit"} element={<EditPage edit />} />
+            <Route path={"/records/create"} element={<EditPage create />} />
             <Route path={"/about"} element={<div>About</div>} />
+            <Route path={"/services"} element={<Services />} />
+            <Route path={"/services/:id"} element={<CategoryView />} />
             // Other routes...
             <Route path={"*"} element={<Page404 />} />
           </Routes>

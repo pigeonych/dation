@@ -8,12 +8,16 @@ import {
   IdentificationIcon,
   LightBulbIcon,
   UserGroupIcon,
+  ViewGridIcon,
+  ViewListIcon,
 } from "../../assets/icons/sidebar";
 import classNames from "../../utils/classNames";
 import { NavigationItem } from "../../interfaces";
 import { Link } from "react-router-dom";
 
 const navigations: NavigationItem[] = [
+  { name: "Компания", to: "/company", icon: ViewListIcon },
+  { name: "Записи", to: "/records/general", icon: ViewGridIcon },
   { name: "Персонал", to: "/staff", icon: IdentificationIcon },
   { name: "Клиенты", to: "/clients", icon: UserGroupIcon },
   { name: "Услуги", to: "/services", icon: AdjustmentsIcon },
@@ -45,7 +49,7 @@ const Navigation: React.FC<{}> = () => {
                     to={item.to}
                     className={classNames(
                       isCurrent
-                        ? "bg-gray-50 text-brand"
+                        ? "bg-brand text-white"
                         : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50",
                       "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold",
                     )}
@@ -53,10 +57,11 @@ const Navigation: React.FC<{}> = () => {
                     <item.icon
                       className={classNames(
                         isCurrent
-                          ? "text-indigo-600"
+                          ? "text-white"
                           : "text-gray-400 group-hover:text-indigo-600",
                         "h-6 w-6 shrink-0",
                       )}
+                      color={isCurrent ? "white" : "#9CA3AF"}
                     />
                     {item.name}
                   </Link>

@@ -4,6 +4,7 @@ import { PaperClipIcon } from "../../../../assets/icons/all";
 import Input from "../../../Input";
 import { Select } from "antd";
 import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
+import { InputNumber } from "antd/lib";
 
 const Main: FC<{}> = () => {
   const [counter, setCounter] = React.useState<number>(1);
@@ -11,7 +12,7 @@ const Main: FC<{}> = () => {
   const renderPrice = useMemo(() => {
     return inRange ? (
       <Col className="w-full flex justify-between items-end gap-x-5 px-5">
-        <div className="flex w-1/2 flex-col gap-y-1">
+        <div className="flex flex-1 flex-col gap-y-1">
           <label className="text-sm">Цена</label>
           <Input
             placeholder={"От"}
@@ -29,7 +30,7 @@ const Main: FC<{}> = () => {
             }
           />
         </div>
-        <div className="flex w-1/2 flex-col gap-y-1">
+        <div className="flex flex-1 flex-col gap-y-1">
           <Input
             placeholder={"До"}
             className={"border-2 border-gray-100"}
@@ -145,36 +146,35 @@ const Main: FC<{}> = () => {
             <Switch defaultChecked />
             <div className="text-sm">Самостоятельный выбор</div>
           </Col>
-          <Col className="w-full flex justify-between items-end gap-x-5 px-5">
+          <Col className="w-full flex justify-between items-center gap-x-5 px-5">
             <div className="flex w-1/2 flex-col gap-y-1">
-              <label className="text-sm">Длительность</label>
-              <TimePicker
-                onChange={(e) => {
-                  console.log("visit time start: ", e);
-                }}
-                className={"border-2 border-gray-100 py-2"}
-                placeholder={"Начало"}
-              />
+              <label className="text-sm">Длительность ОТ в часах</label>
+              <InputNumber className={"w-full"} min={0} />
             </div>
             <div className="flex w-1/2 flex-col gap-y-1">
-              <TimePicker
-                onChange={(e) => {
-                  console.log("visit time end: ", e);
-                }}
-                className={"border-2 border-gray-100 py-2"}
-                placeholder={"Конец"}
-              />
+              <label className="text-sm">Длительность ОТ в минутах</label>
+              <InputNumber className={"w-full"} min={0} />
+            </div>
+          </Col>
+          <Col className="w-full flex justify-between items-center gap-x-5 px-5">
+            <div className="flex w-1/2 flex-col gap-y-1">
+              <label className="text-sm">Длительность ДО в часах</label>
+              <InputNumber className={"w-full"} min={0} />
+            </div>
+            <div className="flex w-1/2 flex-col gap-y-1">
+              <label className="text-sm">Длительность ДО в минутах</label>
+              <InputNumber className={"w-full"} min={0} />
             </div>
           </Col>
         </Row>
       </Col>
       <Col className="w-full overflow-hidden flex flex-col items-start justify-start">
-        <Row className="w-full flex justify-between gap-x-3" wrap>
-          <Col className="w-[48%] flex flex-col rounded-lg bg-white">
+        <Row className="w-full flex justify-between gap-x-5" wrap>
+          <Col className="flex-1 flex flex-col rounded-lg bg-white">
             <div className="w-full bg-white flex flex-row items-center justify-center p-4 border-b-[1px] border-solid border-gray-200 rounded-lg">
               <div className="flex-1 flex flex-col items-start justify-center">
                 <div className="self-stretch leading-[24px] font-medium text-xl">
-                  Данные услуги
+                  Использование ресурсов
                 </div>
               </div>
             </div>
@@ -233,11 +233,11 @@ const Main: FC<{}> = () => {
               </Col>
             </Row>
           </Col>
-          <Col className="w-[48%] flex flex-col rounded-lg bg-white">
+          <Col className="flex-1 flex flex-col rounded-lg bg-white">
             <div className="w-full bg-white flex flex-row items-center justify-center p-4 border-b-[1px] border-solid border-gray-200 rounded-lg">
               <div className="flex-1 flex flex-col items-start justify-center">
                 <div className="self-stretch leading-[24px] font-medium text-xl">
-                  Данные услуги
+                  Используемые расходники
                 </div>
               </div>
             </div>

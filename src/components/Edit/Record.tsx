@@ -347,13 +347,13 @@ const Record: FC<{}> = () => {
           </div>
           <Row className="flex flex-col w-full gap-y-5 px-[24px] py-[20px]">
             <Col className="w-full flex gap-x-2">
-              <Switch defaultChecked />
+              <Switch defaultChecked className="bg-gray-400" />
               <label className="text-sm font-normal">
                 Уведомления в телеграм бот
               </label>
             </Col>
             <Col className="w-full flex gap-x-2">
-              <Switch defaultChecked />
+              <Switch defaultChecked className="bg-gray-400" />
               <label className="text-sm font-normal">СМС оповещение</label>
             </Col>
           </Row>

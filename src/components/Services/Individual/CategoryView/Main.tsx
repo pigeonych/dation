@@ -1,10 +1,9 @@
 import React, { FC, useMemo } from "react";
-import { Row, Col, Upload, Button, Switch, TimePicker } from "antd";
+import { Row, Col, Upload, Button, Switch, Input as AntdInput } from "antd";
 import { PaperClipIcon } from "../../../../assets/icons/all";
 import Input from "../../../Input";
 import { Select } from "antd";
 import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
-import { InputNumber } from "antd/lib";
 
 const Main: FC<{}> = () => {
   const [counter, setCounter] = React.useState<number>(1);
@@ -137,33 +136,34 @@ const Main: FC<{}> = () => {
               onChange={() => {
                 setInRange(!inRange);
               }}
+              className="bg-gray-400"
               defaultChecked
             />
             <div className="text-sm">Указать цену в диапозоне</div>
           </Col>
           {renderPrice}
           <Col className="w-full flex items-center gap-x-5 px-5">
-            <Switch defaultChecked />
+            <Switch defaultChecked className="bg-gray-400" />
             <div className="text-sm">Самостоятельный выбор</div>
           </Col>
           <Col className="w-full flex justify-between items-center gap-x-5 px-5">
             <div className="flex w-1/2 flex-col gap-y-1">
               <label className="text-sm">Длительность ОТ в часах</label>
-              <InputNumber className={"w-full"} min={0} />
+              <AntdInput type="number" className={"w-full"} min={0} />
             </div>
             <div className="flex w-1/2 flex-col gap-y-1">
               <label className="text-sm">Длительность ОТ в минутах</label>
-              <InputNumber className={"w-full"} min={0} />
+              <AntdInput type="number" className={"w-full"} min={0} />
             </div>
           </Col>
           <Col className="w-full flex justify-between items-center gap-x-5 px-5">
             <div className="flex w-1/2 flex-col gap-y-1">
               <label className="text-sm">Длительность ДО в часах</label>
-              <InputNumber className={"w-full"} min={0} />
+              <AntdInput type="number" className={"w-full"} min={0} />
             </div>
             <div className="flex w-1/2 flex-col gap-y-1">
               <label className="text-sm">Длительность ДО в минутах</label>
-              <InputNumber className={"w-full"} min={0} />
+              <AntdInput type="number" className={"w-full"} min={0} />
             </div>
           </Col>
         </Row>

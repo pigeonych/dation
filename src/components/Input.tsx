@@ -10,6 +10,7 @@ const Input: FC<{
   onChange?: (
     val: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
+  disabled?: boolean;
   showClear?: boolean;
   showIcon?: boolean;
   icon?: ReactNode;
@@ -25,6 +26,7 @@ const Input: FC<{
   showClear,
   value,
   setValue,
+  disabled,
   defaultValue,
   onChange,
   showIcon,
@@ -36,6 +38,7 @@ const Input: FC<{
       <AntdInput
         type={type}
         name={name}
+        disabled={disabled}
         onChange={onChange}
         id={name}
         className={`block w-full rounded-lg border-0 py-1.5 z-10 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6 px-4 ${
@@ -58,6 +61,7 @@ const Input: FC<{
     <AntdInput.TextArea
       name={name}
       id={name}
+      disabled={disabled}
       value={value}
       onChange={onChange}
       autoSize

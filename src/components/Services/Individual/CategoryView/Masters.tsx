@@ -57,7 +57,7 @@ const Masters: FC<{}> = () => {
               <div className="flex-1 leading-[20px]">{master.consumables}</div>
 
               <div className="flex flex-1 gap-x-5 justify-end">
-                <PencilIcon className={"w-6 h-6"} />
+                <PencilIcon className={"w-6 h-6 shrink-0"} />
                 <img
                   className="w-6 h-6 overflow-hidden shrink-0"
                   alt=""

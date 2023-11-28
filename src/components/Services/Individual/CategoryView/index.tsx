@@ -86,7 +86,7 @@ const CategoryView: FC<{}> = () => {
                 }
               >
                 <div className={"text-sm"}>Название услуги</div>
-                <Switch defaultChecked={true} />
+                <Switch defaultChecked={false} className="bg-gray-400" />
               </Col>
               <Col
                 className={
@@ -94,7 +94,7 @@ const CategoryView: FC<{}> = () => {
                 }
               >
                 <div className={"text-sm"}>Название услуги</div>
-                <Switch defaultChecked={true} />
+                <Switch defaultChecked={true} className="bg-gray-400" />
               </Col>
               <Col
                 className={
@@ -102,7 +102,7 @@ const CategoryView: FC<{}> = () => {
                 }
               >
                 <div className={"text-sm"}>Название услуги</div>
-                <Switch defaultChecked={true} />
+                <Switch defaultChecked={true} className="bg-gray-400" />
               </Col>
               <Col
                 className={
@@ -110,7 +110,7 @@ const CategoryView: FC<{}> = () => {
                 }
               >
                 <div className={"text-sm"}>Название услуги</div>
-                <Switch defaultChecked={true} />
+                <Switch defaultChecked={true} className="bg-gray-400" />
               </Col>
             </Row>
           </Col>

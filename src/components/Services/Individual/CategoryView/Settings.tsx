@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Col, Row, Switch, InputNumber, TimePicker } from "antd";
+import { Col, Row, Switch, Input, TimePicker } from "antd";
 
 const Settings: FC<{}> = () => {
   return (
@@ -8,20 +8,20 @@ const Settings: FC<{}> = () => {
         <Row className="flex flex-col bg-white w-full p-5 gap-y-5 wrap">
           <Col className="w-full flex justify-between">
             <div>Отображать в онлайн бронировании</div>
-            <Switch defaultChecked />
+            <Switch defaultChecked className="bg-gray-400" />
           </Col>
           <Col className="w-full flex justify-between">
             <div>Только если первый заказ</div>
-            <Switch defaultChecked />
+            <Switch defaultChecked className="bg-gray-400" />
           </Col>
           <Col className="w-full flex justify-between gap-x-5">
             <div className="flex-1 flex flex-col gap-y-1">
               <label>Если сумма более</label>
-              <InputNumber min={0} className="w-full" />
+              <Input type="number" min={0} className="w-full" />
             </div>
             <div className="flex-1 flex flex-col gap-y-1">
               <label>Процент предоплаты</label>
-              <InputNumber min={0} className="w-full" />
+              <Input type="number" min={0} className="w-full" />
             </div>
           </Col>
           <Col className="w-full flex justify-between items-end gap-x-5">

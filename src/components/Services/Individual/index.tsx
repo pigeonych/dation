@@ -60,8 +60,8 @@ const Individual: FC<{}> = () => {
                 {service.materials}
               </div>
               <div className="flex flex-1 gap-x-5 justify-end">
-                <Switch defaultChecked={true} />
-                <PencilIcon className={"w-6 h-6"} />
+                <Switch defaultChecked={true} className="bg-gray-400" />
+                <PencilIcon className={"w-6 h-6 shrink-0"} />
               </div>
             </div>
           );
@@ -89,7 +89,7 @@ const Individual: FC<{}> = () => {
                   </div>
                 </button>
                 <Link to={`/services/${category.id}`}>
-                  <PencilIcon className={"w-6 h-6"} />
+                  <PencilIcon className={"w-6 h-6 shrink-0"} />
                 </Link>
               </div>
             </div>

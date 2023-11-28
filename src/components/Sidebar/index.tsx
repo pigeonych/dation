@@ -16,6 +16,7 @@ import Page404 from "../404";
 import Company from "../Company";
 import Services from "../Services";
 import CategoryView from "../Services/Individual/CategoryView";
+import Stock from "../Stock";
 
 export default function Sidebar() {
   const today = startOfToday();
@@ -202,12 +203,16 @@ export default function Sidebar() {
 
         <main className="lg:pl-72">
           <Routes>
-            <Route path={"/"} element={<Calendar day={day} />} />
+            <Route path={"/"} element={<Company />} />
+            // Company
             <Route path={"/company"} element={<Company />} />
+            // Records
             <Route path={"/records/general"} element={<Calendar day={day} />} />
             <Route path={"/records/:id/edit"} element={<EditPage edit />} />
             <Route path={"/records/create"} element={<EditPage create />} />
-            <Route path={"/about"} element={<div>About</div>} />
+            // Stock
+            <Route path={"/stock"} element={<Stock />} />
+            // Services
             <Route path={"/services"} element={<Services />} />
             <Route path={"/services/:id"} element={<CategoryView />} />
             // Other routes...

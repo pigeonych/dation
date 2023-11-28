@@ -140,7 +140,7 @@ const Client: FC<{}> = () => {
             </Row>
             <Row wrap={false} className="w-full flex">
               <Col className="w-full flex gap-x-2">
-                <Switch defaultChecked />
+                <Switch defaultChecked className="bg-gray-400" />
                 <label className="text-sm font-normal">
                   Оповещения в телеграм
                 </label>

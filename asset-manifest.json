@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dation/static/css/main.2f18ea09.css",
-    "main.js": "/dation/static/js/main.9809416d.js",
+    "main.css": "/dation/static/css/main.6d082994.css",
+    "main.js": "/dation/static/js/main.3ecf3fe8.js",
     "static/media/locationmarker.svg": "/dation/static/media/locationmarker.1fba8a50d15f0fe7645fc007e4bb7f0d.svg",
     "static/media/chevrondown.svg": "/dation/static/media/chevrondown.cc50d63d90330724dbf7d2da3b9260db.svg",
     "static/media/collection.svg": "/dation/static/media/collection.32f087340c9069d8900d73cff81425c1.svg",
@@ -9,11 +9,11 @@
     "static/media/discount.svg": "/dation/static/media/discount.dac229e128fc83b844e80ca9553b699c.svg",
     "static/media/trash.svg": "/dation/static/media/trash.16d6d478e134e659c64ba09f749193c9.svg",
     "index.html": "/dation/index.html",
-    "main.2f18ea09.css.map": "/dation/static/css/main.2f18ea09.css.map",
-    "main.9809416d.js.map": "/dation/static/js/main.9809416d.js.map"
+    "main.6d082994.css.map": "/dation/static/css/main.6d082994.css.map",
+    "main.3ecf3fe8.js.map": "/dation/static/js/main.3ecf3fe8.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f18ea09.css",
-    "static/js/main.9809416d.js"
+    "static/css/main.6d082994.css",
+    "static/js/main.3ecf3fe8.js"
   ]
 }

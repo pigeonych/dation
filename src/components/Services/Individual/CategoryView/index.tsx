@@ -49,7 +49,7 @@ const CategoryView: FC<{}> = () => {
   return (
     <div className="flex h-full flex-col text-left text-black font-text-lg-leading-6-font-medium pb-6">
       <header className="flex flex-none items-center justify-between border-b border-gray-200 px-6 py-4 bg-white">
-        <div className="w-[585.5px] flex flex-row items-center justify-start gap-[16px]">
+        <div className="flex flex-row items-center justify-between gap-[16px]">
           <Link to={"/services"}>
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
           </Link>
@@ -57,7 +57,7 @@ const CategoryView: FC<{}> = () => {
             <div className="text-xl font-bold leading-9">Категория 1</div>
           </div>
         </div>
-        <div className="w-[360.8px] flex flex-row items-center justify-end gap-[24px] text-sm">
+        <div className="flex flex-row items-center justify-end gap-[24px] text-sm">
           <button className="text-white rounded-md bg-brand hover:bg-indigo-500 overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] text-tailwindui-white">
             <div className="leading-[20px] font-medium">Сохранить</div>
           </button>

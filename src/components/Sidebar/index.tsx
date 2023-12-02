@@ -17,6 +17,8 @@ import Company from "../Company";
 import Services from "../Services";
 import CategoryView from "../Services/Individual/CategoryView";
 import Stock from "../Stock";
+import Staff from "../Staff";
+import Details from "../Staff/Details";
 
 export default function Sidebar() {
   const today = startOfToday();
@@ -105,32 +107,38 @@ export default function Sidebar() {
                     </div>
                   </Transition.Child>
                   {/* Sidebar component, swap this element with another sidebar if you like */}
-                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
-                    <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src={logoPng}
-                        alt="Your Company"
-                      />
+                  <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white pb-2">
+                    <div className="w-full h-16 p-6">
+                      <Link to={"/"}>
+                        <img
+                          className="h-8 w-auto"
+                          src={logoPng}
+                          alt="Your Company"
+                        />
+                      </Link>
                     </div>
-                    <div className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 px-5 gap-[12px] text-base border-b-[1px] border-solid border-gray-200">
+                    <Dropdown
+                      trigger={["click"]}
+                      menu={branchMenu}
+                      className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 gap-[12px] text-base border-b-[1px] border-t-[1px] border-solid border-gray-200 px-6"
+                    >
                       <div className="flex flex-row items-center justify-start gap-[4px]">
                         <img
                           className="w-5 h-5 overflow-hidden shrink-0"
                           alt="locationMarker"
                           src={LocationMarker}
                         />
-                        <div className="leading-[24px] font-medium">
+                        <div className="flex-1 relative leading-[24px] font-medium">
                           {branch}
                         </div>
+                        <img
+                          className="w-5 h-5 overflow-hidden shrink-0"
+                          alt="downIcon"
+                          src={ChevronDownIcon}
+                        />
                       </div>
-                      <img
-                        className="w-5 h-5 overflow-hidden shrink-0"
-                        alt=""
-                        src={ChevronDownIcon}
-                      />
-                    </div>
-                    <div className="flex h-fit w-full shrink-0 items-center">
+                    </Dropdown>
+                    <div className="flex h-fit w-full shrink-0 items-center px-6">
                       <MiniCalendar setDay={setDay} />
                     </div>
                     <Navigation />
@@ -145,8 +153,8 @@ export default function Sidebar() {
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
 
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
-            <div className="w-full h-16 p-4 pl-0">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white">
+            <div className="w-full h-16 p-6">
               <Link to={"/"}>
                 <img className="h-8 w-auto" src={logoPng} alt="Your Company" />
               </Link>
@@ -154,7 +162,7 @@ export default function Sidebar() {
             <Dropdown
               trigger={["click"]}
               menu={branchMenu}
-              className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 px-5 gap-[12px] text-base border-b-[1px] border-t-[1px] border-solid border-gray-200"
+              className="self-stretch box-border h-16 overflow-hidden shrink-0 flex flex-row items-center justify-start py-4 gap-[12px] text-base border-b-[1px] border-t-[1px] border-solid border-gray-200 px-6"
             >
               <div className="flex flex-row items-center justify-start gap-[4px]">
                 <img
@@ -172,14 +180,27 @@ export default function Sidebar() {
                 />
               </div>
             </Dropdown>
-            <div className="flex h-fit w-full shrink-0 items-center">
+            <div className="flex h-fit w-full shrink-0 items-center px-6">
               <MiniCalendar setDay={setDay} />
             </div>
             <Navigation />
+            <div
+              className={"flex w-full gap-x-3 items-center justify-start pl-7"}
+            >
+              <img
+                className="h-8 w-8 rounded-full bg-gray-50"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+              />
+              <div className={"flex flex-col"}>
+                <div>Arslan Murzaikov</div>
+                <div className="text-gray-500 text-sm">+998914390342</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 z-40 flex items-center justify-between gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button
             type="button"
             className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
@@ -188,9 +209,6 @@ export default function Sidebar() {
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
-            Dashboard
-          </div>
           <a href="#">
             <span className="sr-only">Your profile</span>
             <img
@@ -205,16 +223,24 @@ export default function Sidebar() {
           <Routes>
             <Route path={"/"} element={<Company />} />
             // Company
-            <Route path={"/company"} element={<Company />} />
+            <Route path={"/company/about"} element={<Company />} />
+            <Route path={"/company/branches"} element={<div>Branches</div>} />
             // Records
             <Route path={"/records/general"} element={<Calendar day={day} />} />
-            <Route path={"/records/:id/edit"} element={<EditPage edit />} />
             <Route path={"/records/create"} element={<EditPage create />} />
+            <Route
+              path={"/records/:id/personal"}
+              element={<div>Personal</div>}
+            />
+            <Route path={"/records/:id/edit"} element={<EditPage edit />} />
             // Stock
             <Route path={"/stock"} element={<Stock />} />
             // Services
             <Route path={"/services"} element={<Services />} />
             <Route path={"/services/:id"} element={<CategoryView />} />
+            // Staff
+            <Route path={"/staff"} element={<Staff />} />
+            <Route path={"/staff/:id/view"} element={<Details />} />
             // Other routes...
             <Route path={"*"} element={<Page404 />} />
           </Routes>

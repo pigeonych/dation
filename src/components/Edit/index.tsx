@@ -49,7 +49,7 @@ const EditPage: FC<{
   return (
     <div className="flex h-full flex-col text-left text-black font-text-lg-leading-6-font-medium pb-6">
       <header className="flex flex-none items-center justify-between border-b border-gray-200 px-6 py-4 bg-white">
-        <div className="w-[585.5px] flex flex-row items-center justify-start gap-[16px]">
+        <div className="flex flex-row items-center justify-start gap-[16px]">
           <Link to={"/records/general"}>
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
           </Link>
@@ -59,7 +59,7 @@ const EditPage: FC<{
             </div>
           </div>
         </div>
-        <div className="w-[360.8px] flex flex-row items-center justify-end gap-[24px] text-sm">
+        <div className="flex flex-row items-center justify-end gap-[24px] text-sm">
           <button className="text-red-800 rounded-md bg-red-100 hover:bg-red-200 overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px]">
             <div className="leading-[20px] font-medium">Удалить запись</div>
           </button>

@@ -32,7 +32,7 @@ const Company: React.FC<{}> = () => {
   return (
     <div className="flex h-full flex-col text-left text-black font-text-lg-leading-6-font-medium pb-6">
       <header className="flex flex-none items-center justify-between border-b border-gray-200 px-6 py-4 bg-white">
-        <div className="w-[585.5px] flex flex-row items-center justify-start gap-[16px]">
+        <div className="w-full flex flex-row items-center justify-between gap-[16px]">
           <div className="flex flex-row items-center justify-start">
             <div className="text-xl font-bold leading-9">Моя компания</div>
           </div>
@@ -44,7 +44,7 @@ const Company: React.FC<{}> = () => {
         </div>
       </header>
       <Row className="isolate w-full h-full overflow-auto">
-        <Row className="flex flex-col gap-y-5 pt-5 px-5 w-[50%] h-full">
+        <Row className="flex flex-col gap-y-5 pt-5 px-5 flex-1 h-full">
           <Col className="rounded-lg w-full overflow-hidden flex flex-col items-start bg-white justify-start">
             <div className="w-full bg-tailwindui-white flex flex-row items-center justify-center p-4 border-b-[1px] border-solid border-gray-200">
               <div className="flex-1 flex flex-col items-start justify-center">
@@ -177,7 +177,7 @@ const Company: React.FC<{}> = () => {
             </Row>
           </Col>
         </Row>
-        <Row className="flex flex-col gap-y-5 pt-5 pr-5 w-[50%] h-full">
+        <Row className="flex flex-col gap-y-5 pt-5 pr-5 flex-1 h-full">
           <Col className="rounded-lg w-full overflow-hidden flex flex-col items-start bg-white justify-start">
             <div className="w-full bg-tailwindui-white flex flex-row items-center justify-center p-4 border-b-[1px] border-solid border-gray-200">
               <div className="flex-1 flex items-start gap-x-5">

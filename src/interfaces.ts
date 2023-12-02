@@ -8,7 +8,8 @@ export type NavigationIcon = React.FC<{
 export type NavigationItem = {
   name: string;
   to: string;
-  icon: NavigationIcon;
+  icon: NavigationIcon | null;
+  children?: NavigationItem[];
 };
 
 export type StatusType = "process" | "done" | "canceled";

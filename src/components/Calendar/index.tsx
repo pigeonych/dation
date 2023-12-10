@@ -20,7 +20,7 @@ const Calendar: FC<{ day: Date }> = ({ day }) => {
           <time dateTime={format(day, "yyyy-MM-dd")}>
             {translateDate(format(day, "MMMM dd"), false) +
               ", " +
-              rusWeekDays[day.getDay()]}
+              rusWeekDays[day.getDay()].toLowerCase()}
           </time>
         </h1>
         <div className="flex items-center align-middle">

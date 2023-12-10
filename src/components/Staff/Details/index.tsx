@@ -82,13 +82,13 @@ const Details: FC<{}> = () => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-end gap-[24px] text-sm">
-          <button className="rounded-md overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] border-2 border-gray-300 hover:bg-gray-100">
+          <button className="rounded-md overflow-hidden flex flex-row items-center justify-center py-2 px-3 border-2 border-gray-300 hover:bg-gray-100">
             <div className="leading-[20px] font-medium">Сбросить пароль</div>
           </button>
-          <button className="text-red-800 rounded-md border-2 border-red-100 bg-red-100 overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] hover:bg-red-500 hover:border-red-500 hover:text-white">
+          <button className="text-red-800 rounded-md border-2 border-red-100 bg-red-100 overflow-hidden flex flex-row items-center justify-center py-2 px-3 hover:bg-red-500 hover:border-red-500 hover:text-white">
             <div className="leading-[20px] font-medium">Удалить мастера</div>
           </button>
-          <button className="text-white rounded-md bg-brand hover:bg-indigo-500 border-2 border-brand overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] text-tailwindui-white">
+          <button className="text-white rounded-md bg-brand hover:bg-indigo-500 border-2 border-brand overflow-hidden flex flex-row items-center justify-center py-2 px-3 text-tailwindui-white">
             <div className="leading-[20px] font-medium">Сохранить</div>
           </button>
         </div>

@@ -1,9 +1,12 @@
 import React, { FC, useMemo, useState } from "react";
-import { Col, Row, Switch } from "antd";
+import { Col, Modal, Row, Select, Switch } from "antd";
 import { PencilIcon } from "../../../assets/icons/all";
 import { Link } from "react-router-dom";
 import TrashIcon from "../../../assets/svg/trash.svg";
 import ChevronDownIcon from "@heroicons/react/20/solid/ChevronDownIcon";
+import { nanoid } from "nanoid";
+import { PlusIcon } from "@heroicons/react/20/solid";
+import Notification from "../../../utils/notification";
 
 type Service = {
   name: string;
@@ -39,7 +42,122 @@ const categories: Category[] = [
   { name: "Категория 2", services: services2, key: "c2", id: "c2" },
 ];
 
+const AddService: FC<{
+  show: boolean;
+  setShow: (show: boolean) => void;
+  categoryId?: string;
+}> = ({ show, setShow, categoryId }) => {
+  const [services, setServices] = useState([
+    {
+      name: "Услуга 1",
+      value: "service1",
+    },
+    {
+      name: "Услуга 2",
+      value: "service2",
+    },
+    {
+      name: "Услуга 3",
+      value: "service3",
+    },
+    {
+      name: "Услуга 4",
+      value: "service4",
+    },
+  ]);
+
+  const renderSerivces = useMemo(() => {
+    return (
+      <Row className="flex flex-col w-full" wrap>
+        {services.map((s, index, arr) => {
+          const rounded =
+            index === 0
+              ? "rounded-t-lg"
+              : index === arr.length - 1
+              ? "rounded-b-lg"
+              : "";
+          return (
+            <Col
+              key={s.value}
+              className={`w-full ${rounded} border-t-2 border-l-2 border-r-2 ${
+                index === arr.length - 1 ? "border-b-2" : ""
+              } border-gray-100 py-2 px-4 hover:bg-gray-100`}
+            >
+              {s.name}
+            </Col>
+          );
+        })}
+      </Row>
+    );
+  }, [categoryId]);
+  return (
+    <Modal
+      open={show}
+      title={<div>Добавление категории</div>}
+      children={
+        <Row className={"w-full flex flex-col gap-y-4"}>
+          <Col className={"w-full flex flex-col gap-y-1"}>
+            <label>Название категории</label>
+            <Select
+              placeholder={"Выберите"}
+              className={"w-full"}
+              options={[
+                { label: "Категория 1", value: "category1" },
+                { label: "Категория 2", value: "category2" },
+                { label: "Категория 3", value: "category3" },
+              ]}
+            />
+          </Col>
+          <Col className={"w-full max-h-80 overflow-auto"}>
+            {renderSerivces}
+          </Col>
+        </Row>
+      }
+      closeIcon={null}
+      centered
+      maskClosable={true}
+      onCancel={() => {
+        setShow(false);
+      }}
+      footer={() => {
+        return (
+          <Row className="flex justify-between items-center gap-x-5">
+            <Col className="flex-1">
+              <button
+                className="w-full rounded-md overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] border-2 border-gray-300 hover:bg-gray-100"
+                onClick={() => {
+                  setShow(false);
+                }}
+              >
+                <div className="leading-[20px] font-medium">Отмена</div>
+              </button>
+            </Col>
+            <Col className="flex-1">
+              <button
+                className="w-full text-white rounded-md border-2 border-brand bg-brand overflow-hidden flex flex-row items-center justify-center py-[9px] px-[17px] hover:bg-blue-500 hover:border-blue-500"
+                onClick={() => {
+                  setShow(false);
+                  Notification(
+                    "bottomRight",
+                    "success",
+                    "Создание категории!",
+                    "Категория была успешно создана.",
+                    3,
+                  );
+                }}
+              >
+                <div className="leading-[20px] font-medium">Создать</div>
+              </button>
+            </Col>
+          </Row>
+        );
+      }}
+    />
+  );
+};
+
 const Services: FC<{}> = () => {
+  const [add, setAdd] = useState(false);
   const servicesList = (category: Category) => {
     return (
       <div className="rounded-md bg-tailwindui-white w-full overflow-hidden flex flex-col items-start justify-start">
@@ -129,8 +247,20 @@ const Services: FC<{}> = () => {
   return (
     <Row className="isolate w-full h-full overflow-auto">
       <Row className="flex flex-col gap-y-5 pt-5 px-5 w-full h-full">
+        <button
+          onClick={() => {
+            setAdd(true);
+          }}
+          className="rounded-md w-full bg-transparent border-dashed border-2 border-brand hover:bg-blue-100 hover:border-solid flex items-center justify-center py-6 text-sm text-brand gap-x-2"
+        >
+          <PlusIcon className={"w-6 h-6"} />
+          <div className="leading-[16px] font-medium">Добавить расходник</div>
+        </button>
+      </Row>
+      <Row className="flex flex-col gap-y-5 pt-5 px-5 w-full h-full">
         {categoriesList}
       </Row>
+      <AddService show={add} setShow={setAdd} />
     </Row>
   );
 };

@@ -9,7 +9,8 @@ import { Dropdown, MenuProps } from "antd";
 import { Calendar as MiniCalendar } from "./Calendar";
 import Navigation from "./Navigation";
 import Calendar from "../Calendar";
-import EditPage from "../Edit/index";
+import { Edit as RecordsEdit } from "../Edit/index";
+import { Edit as BranchesEdit } from "../Branches/Edit";
 import LocationMarker from "../../assets/svg/locationmarker.svg";
 import ChevronDownIcon from "../../assets/svg/chevrondown.svg";
 import Page404 from "../404";
@@ -19,6 +20,7 @@ import CategoryView from "../Services/Individual/CategoryView";
 import Stock from "../Stock";
 import Staff from "../Staff";
 import Details from "../Staff/Details";
+import Branches from "../Branches";
 
 export default function Sidebar() {
   const today = startOfToday();
@@ -224,15 +226,19 @@ export default function Sidebar() {
             <Route path={"/"} element={<Company />} />
             // Company
             <Route path={"/company/about"} element={<Company />} />
-            <Route path={"/company/branches"} element={<div>Branches</div>} />
+            <Route path={"/company/branches"} element={<Branches />} />
+            <Route
+              path={"/company/branches/:id/edit"}
+              element={<BranchesEdit />}
+            />
             // Records
             <Route path={"/records/general"} element={<Calendar day={day} />} />
-            <Route path={"/records/create"} element={<EditPage create />} />
+            <Route path={"/records/create"} element={<RecordsEdit create />} />
             <Route
               path={"/records/:id/personal"}
               element={<div>Personal</div>}
             />
-            <Route path={"/records/:id/edit"} element={<EditPage edit />} />
+            <Route path={"/records/:id/edit"} element={<RecordsEdit edit />} />
             // Stock
             <Route path={"/stock"} element={<Stock />} />
             // Services

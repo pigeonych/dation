@@ -14,7 +14,7 @@ const TranslatedEditType: Record<string, string> = {
   history: "История посещений",
 };
 
-const EditPage: FC<{
+export const Edit: FC<{
   edit?: boolean;
   create?: boolean;
 }> = ({ edit, create }) => {
@@ -77,5 +77,3 @@ const EditPage: FC<{
     </div>
   );
 };
-
-export default EditPage;

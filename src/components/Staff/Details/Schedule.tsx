@@ -15,7 +15,7 @@ const Schedule: FC<{}> = () => {
             <div className="flex flex-col items-center gap-y-3">
               <div className="flex justify-between w-full items-center text-center text-gray-900">
                 <div className={"font-bold text-base"}>{day}</div>
-                <Switch defaultChecked />
+                <Switch defaultChecked className="bg-gray-400" />
               </div>
               <div className="flex h-fit w-full flex-col gap-y-5">
                 <div className={"flex justify-between items-center gap-x-4"}>

@@ -13,3 +13,8 @@ export type NavigationItem = {
 };
 
 export type StatusType = "process" | "done" | "canceled";
+
+export type User = {
+  username: string;
+  password: string;
+};

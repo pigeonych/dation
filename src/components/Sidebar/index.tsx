@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import logoPng from "../../assets/images/logo.png";
 import { startOfToday } from "date-fns";
 import { Dropdown, MenuProps } from "antd";
+import { Outlet } from "react-router-dom";
 
 import { Calendar as MiniCalendar } from "./Calendar";
 import Navigation from "./Navigation";
@@ -22,11 +23,11 @@ import Staff from "../Staff";
 import Details from "../Staff/Details";
 import Branches from "../Branches";
 
-export default function Sidebar() {
-  const today = startOfToday();
+export const Sidebar: FC<{
+  setDay: React.Dispatch<React.SetStateAction<Date>>;
+}> = ({ setDay }) => {
   const [branch, setBranch] = useState("Филиал 1");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [day, setDay] = useState(today);
 
   const branches: MenuProps["items"] = [
     {
@@ -222,36 +223,9 @@ export default function Sidebar() {
         </div>
 
         <main className="lg:pl-72">
-          <Routes>
-            <Route path={"/"} element={<Company />} />
-            // Company
-            <Route path={"/company/about"} element={<Company />} />
-            <Route path={"/company/branches"} element={<Branches />} />
-            <Route
-              path={"/company/branches/:id/edit"}
-              element={<BranchesEdit />}
-            />
-            // Records
-            <Route path={"/records/general"} element={<Calendar day={day} />} />
-            <Route path={"/records/create"} element={<RecordsEdit create />} />
-            <Route
-              path={"/records/:id/personal"}
-              element={<div>Personal</div>}
-            />
-            <Route path={"/records/:id/edit"} element={<RecordsEdit edit />} />
-            // Stock
-            <Route path={"/stock"} element={<Stock />} />
-            // Services
-            <Route path={"/services"} element={<Services />} />
-            <Route path={"/services/:id"} element={<CategoryView />} />
-            // Staff
-            <Route path={"/staff"} element={<Staff />} />
-            <Route path={"/staff/:id/view"} element={<Details />} />
-            // Other routes...
-            <Route path={"*"} element={<Page404 />} />
-          </Routes>
+          <Outlet />
         </main>
       </div>
     </>
   );
-}
+};
